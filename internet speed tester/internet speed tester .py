@@ -6,14 +6,14 @@ class main (qt.QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("internet speed tester")
-        self.إظهار1=qt.QLabel("سرعة التحميل")
+        self.إظهار1=qt.QLabel("سرعة التحميل في الثانية")
         self.التحميل=qt.QLineEdit()
         self.التحميل.setReadOnly(True)
-        self.التحميل.setAccessibleName("سرعة التحميل")
-        self.إظهار2=qt.QLabel("سرعة الرفع")
+        self.التحميل.setAccessibleName("سرعة التحميل في الثانية")
+        self.إظهار2=qt.QLabel("سرعة الرفع في الثانية")
         self.الرفع=qt.QLineEdit()
         self.الرفع.setReadOnly(True)
-        self.الرفع.setAccessibleName("سرعة الرفع")        
+        self.الرفع.setAccessibleName("سرعة الرفع في الثانية")
         self.بدء=qt.QPushButton("بدء الاختبار")
         self.بدء.setDefault(True)
         self.بدء.clicked.connect(self.test)
@@ -35,10 +35,10 @@ class main (qt.QMainWindow):
             qt.QMessageBox.warning(self, "تنبيه","لقد بدأ الاختبار, يرجى الانتظار لأنه قد يأخذ بعض الوقت")
             السرعة=speedtest.Speedtest()            
             سرعة_التحميل=السرعة.download() / 1000000
-            سرعة_الرفع=السرعة.upload() / 1000000            
+            سرعة_الرفع=السرعة.upload() / 1000000
             self.التحميل.setText(f"{سرعة_التحميل} MB")
             self.الرفع.setText(f"{سرعة_الرفع} MB")
-            self.التحميل.setFocus()
+            self.التحميل.setFocus()            
         except:
             qt.QMessageBox.warning(self, "تحذير", "حدث خطأ ما, تأكد من إتصالك بالإنترنت")
     def about(self):
