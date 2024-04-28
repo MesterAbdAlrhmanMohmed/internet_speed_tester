@@ -40,7 +40,7 @@ class main (qt.QMainWindow):
             self.الرفع.setText(f"{سرعة_الرفع} MB")
             self.التحميل.setFocus()            
         except:
-            qt.QMessageBox.warning(self, "تحذير", "حدث خطأ ما, تأكد من إتصالك بالإنترنت")
+            qt.QMessageBox.warning(self, "تحذير", "حدث خطأ ما, تأكد من إتصالك بالإنترنت, وإذا إستمرت المشكلة قم بإعادة تشغيل الكمبيوتر")
     def about(self):
         about.dialog(self).exec()
 app=qt.QApplication([])
