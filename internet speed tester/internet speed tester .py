@@ -33,11 +33,11 @@ class main (qt.QMainWindow):
     def test(self):
         try:
             qt.QMessageBox.warning(self, "تنبيه","لقد بدأ الاختبار, يرجى الانتظار لأنه قد يأخذ بعض الوقت")
-            st=speedtest.Speedtest()            
-            download_speed=st.download() / 1000000
-            upload_speed=st.upload() / 1000000            
-            self.التحميل.setText(f"{download_speed} MB")
-            self.الرفع.setText(f"{upload_speed} MB")
+            السرعة=speedtest.Speedtest()            
+            سرعة_التحميل=السرعة.download() / 1000000
+            سرعة_الرفع=السرعة.upload() / 1000000            
+            self.التحميل.setText(f"{سرعة_التحميل} MB")
+            self.الرفع.setText(f"{سرعة_الرفع} MB")
             self.التحميل.setFocus()
         except:
             qt.QMessageBox.warning(self, "تحذير", "حدث خطأ ما, تأكد من إتصالك بالإنترنت")
