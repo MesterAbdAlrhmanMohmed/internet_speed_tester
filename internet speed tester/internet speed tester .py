@@ -14,6 +14,10 @@ class main (qt.QMainWindow):
         self.الرفع=qt.QLineEdit()
         self.الرفع.setReadOnly(True)
         self.الرفع.setAccessibleName("سرعة الرفع في الثانية")
+        self.إظهار3=qt.QLabel("البينج")
+        self.بينج=qt.QLineEdit()
+        self.بينج.setReadOnly(True)
+        self.بينج.setAccessibleName("البينج")
         self.بدء=qt.QPushButton("بدء الاختبار")
         self.بدء.setDefault(True)
         self.بدء.clicked.connect(self.test)
@@ -25,6 +29,8 @@ class main (qt.QMainWindow):
         l.addWidget(self.التحميل)
         l.addWidget(self.إظهار2)
         l.addWidget(self.الرفع)        
+        l.addWidget(self.إظهار3)
+        l.addWidget(self.بينج)
         l.addWidget(self.بدء)
         l.addWidget(self.عن)
         w=qt.QWidget()
@@ -33,11 +39,13 @@ class main (qt.QMainWindow):
     def test(self):
         try:
             qt.QMessageBox.warning(self, "تنبيه","لقد بدأ الاختبار, يرجى الانتظار لأنه قد يأخذ بعض الوقت")
-            السرعة=speedtest.Speedtest()            
+            السرعة=speedtest.Speedtest()
             سرعة_التحميل=السرعة.download() / 1000000
             سرعة_الرفع=السرعة.upload() / 1000000
+            البينج=السرعة.results.ping
             self.التحميل.setText(f"{سرعة_التحميل} MB")
             self.الرفع.setText(f"{سرعة_الرفع} MB")
+            self.بينج.setText(str(البينج))
             self.التحميل.setFocus()            
         except:
             qt.QMessageBox.warning(self, "تحذير", "حدث خطأ ما, تأكد من إتصالك بالإنترنت, وإذا إستمرت المشكلة قم بإعادة تشغيل الكمبيوتر")
